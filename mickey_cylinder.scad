@@ -7,8 +7,8 @@ $fn = 64; // Smooth circles
 body_diameter = 3;    // Main cylinder diameter
 body_height = 8;      // Main cylinder height
 hole_diameter = 1;    // Center hole diameter
-ear_diameter = 1.5;   // Ear diameter
-ear_height = 2;       // Ear height (thickness)
+ear_diameter = 2;     // Ear diameter
+ear_height = 1.5;     // Ear height (thickness)
 ear_offset = 0.8;     // How far ears sit from center
 
 difference() {
@@ -16,13 +16,15 @@ difference() {
         // Main body cylinder
         cylinder(d=body_diameter, h=body_height);
         
-        // Left ear
-        translate([-body_diameter/2 - ear_offset + ear_diameter/2, 0, body_height - ear_height])
-            cylinder(d=ear_diameter, h=ear_height);
+        // Left ear (rotated 90° to stick out horizontally)
+        translate([-body_diameter/2, 0, body_height - ear_diameter/2 - ear_offset])
+            rotate([0, -90, 0])
+                cylinder(d=ear_diameter, h=ear_height);
         
-        // Right ear
-        translate([body_diameter/2 + ear_offset - ear_diameter/2, 0, body_height - ear_height])
-            cylinder(d=ear_diameter, h=ear_height);
+        // Right ear (rotated 90° to stick out horizontally)
+        translate([body_diameter/2, 0, body_height - ear_diameter/2 - ear_offset])
+            rotate([0, 90, 0])
+                cylinder(d=ear_diameter, h=ear_height);
     }
     
     // Center hole through entire height
