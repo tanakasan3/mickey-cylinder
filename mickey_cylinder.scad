@@ -16,14 +16,14 @@ difference() {
         // Main body cylinder
         cylinder(d=body_diameter, h=body_height);
         
-        // Left ear (rotated 90° to stick out horizontally)
-        translate([-body_diameter/2, 0, body_height - ear_diameter/2 - ear_offset])
-            rotate([0, -90, 0])
+        // Left ear (rotated 90° to stick out horizontally on Y axis)
+        translate([0, -body_diameter/2, body_height - ear_diameter/2 - ear_offset])
+            rotate([90, 0, 0])
                 cylinder(d=ear_diameter, h=ear_height);
         
-        // Right ear (rotated 90° to stick out horizontally)
-        translate([body_diameter/2, 0, body_height - ear_diameter/2 - ear_offset])
-            rotate([0, 90, 0])
+        // Right ear (rotated 90° to stick out horizontally on Y axis)
+        translate([0, body_diameter/2, body_height - ear_diameter/2 - ear_offset])
+            rotate([-90, 0, 0])
                 cylinder(d=ear_diameter, h=ear_height);
     }
     
